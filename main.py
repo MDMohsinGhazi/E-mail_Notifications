@@ -34,8 +34,8 @@ with open(old_conf_file, "r") as old_file , open("conf_files/" + datetime.date.t
     diffrence = difflib.HtmlDiff().make_file(fromlines= old_file.readlines(), tolines= new_file.readlines(), fromdesc= "yesterday", todesc="today")
 
 #mail_part
-from_addr = "mdmohsinghazi@gmail.com"
-to_addr = "mdmohsinghazi@gmail.com"
+from_addr = "youremail@gmail.com"
+to_addr = "youremail@gmail.com"
 msg = MIMEMultipart()
 msg["from"] = from_addr
 msg["to"] = to_addr
@@ -43,5 +43,5 @@ msg["sub"] = "Daily configuration Report"
 msg.attach(MIMEText(diffrence, 'html'))
 
 with smtplib.SMTP_SSL("smtp.gmail.com", 465) as s:
-    s.login(from_addr, "M@hsin007")
+    s.login(from_addr, "password")
     s.sendmail(from_addr,to_addr, msg.as_string())
